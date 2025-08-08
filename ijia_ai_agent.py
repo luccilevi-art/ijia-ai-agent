@@ -1,21 +1,21 @@
-
 import streamlit as st
 
 st.set_page_config(page_title="BBSP Eligibility Checker", layout="centered")
 st.title("Better Business Support Package – Eligibility Checker")
 
+# ✅ Initialize session state
 if 'step' not in st.session_state:
     st.session_state.step = 1
 if 'values' not in st.session_state:
-    st.session_state.values = {}
+    st.session_state['values'] = {}
 
 def step_1():
     ans = st.radio("1. Is your business registered and controlled in Jersey?", ["Yes", "No"], key="q1")
     if ans == "No":
         st.error("You must be Jersey-registered to qualify.")
         st.stop()
-    if ans == "Yes":
-        st.session_state.values['registered'] = True
+    elif ans == "Yes":
+        st.session_state['values']['registered'] = True
         st.session_state.step = 2
         st.experimental_rerun()
 
