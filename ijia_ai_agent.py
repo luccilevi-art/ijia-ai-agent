@@ -40,25 +40,18 @@ def step_3():
         return
 
 def step_4():
-    ans = st.selectbox("4. How long has your business been operating?", ["Select one", "Under 6 months", "6 to 18 months", "More than 18 months"], key="q4")
+    ans = st.selectbox("4. Was the Proposal clearly aligned with one or more of the Jersey Strategic Priorities?", ["Select one", "Environment", "Existing Jersey", "Health"], key="q4")
     if ans != "Select one":
         st.session_state['values']['operation_length'] = ans
         st.session_state.step = 5
         return
 
-def step_5():
-    ans = st.radio("5. Does your business operate in the Visitor Economy?", ["Yes", "No"], key="q5")
-    if ans:
-        st.session_state['values']['visitor_economy'] = (ans == "Yes")
-        st.session_state.step = 6
-        return
-
 def show_result():
     vals = st.session_state['values']
     if vals['operation_length'] == "More than 18 months":
-        max_amount = 75000
+        max_amount = Tier 1
     else:
-        max_amount = 5000
+        max_amount = Tier 2
 
     st.success("🎉 Congratulations! You appear to be eligible.")
     msg = f"Eligible for up to **£{max_amount:,}** Productivity grant"
