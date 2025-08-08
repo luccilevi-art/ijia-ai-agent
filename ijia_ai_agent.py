@@ -49,4 +49,35 @@ def step_4():
 def step_5():
     ans = st.radio("5. Does your business operate in the Visitor Economy?", ["Yes", "No"], key="q5")
     if ans:
-        st.session_state['values']['
+        st.session_state['values']['visitor_economy'] = (ans == "Yes")
+        st.session_state.step = 6
+        return
+
+def show_result():
+    vals = st.session_state['values']
+    if vals['operation_length'] == "More than 18 months":
+        max_amount = 75000
+    else:
+        max_amount = 5000
+
+    st.success("🎉 Congratulations! You appear to be eligible.")
+    msg = f"Eligible for up to **£{max_amount:,}** Productivity grant"
+    if vals['visitor_economy']:
+        msg += f", plus up to **£{max_amount:,}** Visitor Economy grant"
+    st.markdown(msg)
+
+# Step controller
+step = st.session_state.step
+
+if step == 1:
+    step_1()
+elif step == 2:
+    step_2()
+elif step == 3:
+    step_3()
+elif step == 4:
+    step_4()
+elif step == 5:
+    step_5()
+elif step == 6:
+    show_result()
