@@ -1,7 +1,7 @@
 import streamlit as st
 
-st.set_page_config(page_title="BBSP Eligibility Checker", layout="centered")
-st.title("Better Business Support Package – Eligibility Checker")
+st.set_page_config(page_title="Eligibility Checker", layout="centered")
+st.title("Eligibility Checker")
 
 # ✅ Initialize session state
 if 'step' not in st.session_state:
@@ -18,6 +18,8 @@ def step_1():
         st.session_state['values']['registered'] = True
         st.session_state.step = 2
         st.experimental_rerun()
+
+# Continue with step_2()
 
 def step_2():
     ans = st.radio("2. Do you employ at least one person (owner + 1) paid £128+ per week for 3+ months?", ["Yes", "No"], key="q2")
