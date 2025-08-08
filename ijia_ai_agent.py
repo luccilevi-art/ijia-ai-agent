@@ -1,7 +1,7 @@
 import streamlit as st
 
-st.set_page_config(page_title="BBSP Eligibility Checker", layout="centered")
-st.title("Better Business Support Package – Eligibility Checker")
+st.set_page_config(page_title="Eligibility Checker", layout="centered")
+st.title("Eligibility Checker")
 
 # Initialize session state
 if 'step' not in st.session_state:
@@ -20,9 +20,9 @@ def step_1():
         return
 
 def step_2():
-    ans = st.radio("2. Do you employ at least one person (owner + 1) paid £128+ per week for 3+ months?", ["Yes", "No"], key="q2")
+    ans = st.radio("2. Does the Proposal clearly aligned with one or more of the Jersey Strategic Priorities?", ["Yes", "No"], key="q2")
     if ans == "No":
-        st.error("Your business must meet the employment condition to qualify.")
+        st.error("Your business must align with condition to qualify.")
         st.stop()
     if ans == "Yes":
         st.session_state['values']['employment'] = True
@@ -30,7 +30,7 @@ def step_2():
         return
 
 def step_3():
-    ans = st.radio("3. Are your tax/social obligations up to date or on an adhered payment plan for 3+ months?", ["Yes", "No"], key="q3")
+    ans = st.radio("3. Do you ??", ["Yes", "No"], key="q3")
     if ans == "No":
         st.error("Tax/Social obligations must be current or on an agreed plan.")
         st.stop()
